@@ -1,0 +1,33 @@
+body{
+    font-family: Verdana;
+    font-size: 1.1em;
+}
+
+tr{
+    text-align: center;
+}
+
+th{
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    white-space: nowrap;
+}
+
+td{
+    text-align: center;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    border-bottom: 1px;
+    white-space: nowrap;
+}
+
+table{
+    border: 10px solid #d0d0ff;
+    padding: 20px;
+    table-layout: fixed;
+    height: initial;
+}
+
+.left-col{
+    text-align: left;
+}
