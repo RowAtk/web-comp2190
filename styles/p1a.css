@@ -1,0 +1,33 @@
+body{
+    font-family: Verdana;
+    font-size: 1.1em;
+}
+
+tr{
+    text-align: center;
+    background-color: #dfe1e7;
+}
+
+th{
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+}
+
+td{
+    text-align: center;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    border-bottom: 1px;
+}
+
+.left-col{
+    text-align: left;
+}
+
+.alt-row{
+    background-color: #eeeff2;
+}
+
+#header-row{
+    background-color: #687291;
+}
