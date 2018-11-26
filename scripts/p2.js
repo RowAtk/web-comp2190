@@ -1,18 +1,26 @@
-function validateForm(form) {
+function validateForm1() {
     let msg = true;
+    let form = document.getElementById("form1");
 
-    alert("HELLO!!!");
-    console.log("In FUNC");
-    //msg = msg && validateDropdown(form.student.trim());
-    msg = msg && validateCode(form.code.trim());
-    msg = msg && validateDiscipline(form.discipline.trim());
-    msg = msg && validateTitle(form.title.trim());
-    msg = msg && validateLevel(form.level.trim());
-    msg = msg && validateCredits(form.credits.trim());
-    msg = msg && validateSemester(form.semester.trim());
+    console.log("FORMS: " + new FormData(form).values());
+    if(isFilled(new FormData(form))){
 
-    return msg
-    
+        // alert("HELLO!!!");
+        console.log(form["code"]);
+        msg = msg && validateCode(form["code"]);
+        console.log(msg);
+        msg = msg && validateDiscipline(form["discipline"]);
+        console.log(msg);
+        msg = msg && validateCredits(form["credits"]);
+        console.log(msg);
+        msg = msg && validateSemester(form["semester"]);
+        console.log(msg);
+        msg = msg && validateDropdown(form["student"]);
+        console.log(msg);
+        return msg
+    }
+    alert("Please fill all form fields");
+    return false;
 }
 
 
@@ -27,93 +35,133 @@ function isEmpty(str){
     return str === "";
 }
 
-function isNum(str, start, end) {
-    let nums = "0123456789";
-    return nums.slice(start, end).indexOf(str) > -1;
+function isNum(str){
+    return /^[0-9]$/.test(str);
 }
+
+function isNumRange(str, start, stop){
+    let nums = "0123456789";
+    let status = true;
+    for(let x = 0; x < str.length; x++){
+        //console.log(str[x]);
+        console.log(nums.slice(start, stop));
+        console.log(nums.slice(start, stop).indexOf(str[x]));
+        if(! (nums.slice(start, stop).indexOf(str[x]) > -1)){
+            console.log("PASS");
+            status = false;
+        }
+    }
+    return status
+}
+
+
+function isNumber(str) {
+    let status = true;
+    for(let x = 0; x < str.length; x++){
+        if(! isNum(str[x])){
+            status = false;
+        }
+    }
+    return status;
+}
+
 
 function isChar(str){
     return /^[a-zA-Z]+$/.test(str);
 }
 
+function isStr(str){
+    let status = true;
+    for(let x = 0; x < str.length; x++){
+        if(!isChar(str[x])){
+            status = false;
+        }
+    }
+    return status;
+}
 
-function validateCode(code) {
+
+function isFilled(formData) {
+    let values = formData.values();
+    console.log(values);
+    for(let value of values){
+        console.log(value);
+        if(isEmpty(value)){
+            return false;
+        }
+    }
+    return true;
+
+}
+
+
+function validateCode(element) {
     let err = "The course code must consist of 4 Numbers only";
-    //let //element = document.get//elementById("code");
-    if (! isEmpty(code)) {
-        if (code.length === 4) {
-            for (let x = 0; x < 4; x++) {
-                if (!isNum(code[x], 0, 10)) {
-                    //element.classList.toggle("error");
-                    alert(err);
-                    return false;
-                }
+    let code = element.value.trim();
+    console.log("FAILED");
+
+    if (code.length === 4) {
+        for (let x = 0; x < 4; x++) {
+            if (isNumber(code)) {
+                return true;
             }
-            return true;
         }
     }
-    //element.classList.toggle("error");
+    element.classList.toggle("error");
     alert(err);
     return false;
 }
 
 
-function validateDiscipline(discipline) {
+function validateDiscipline(element) {
     let err = "The course discipline must consist of 4 letters only";
-    //let //element = document.get//elementById("discipline");
-    if (! isEmpty(discipline)) {
-        if (discipline.length === 4) {
-            for (let x = 0; x < 4; x++) {
-                if (!isChar(discipline)) {
-                    //element.classList.toggle("error");
-                    alert(err);
-                    return false;
-                }
-            }
+    let discipline = element.value.trim();
+    console.log("FAILED");
+
+    if (discipline.length === 4) {
+        if(isStr(discipline)){
             return true;
         }
     }
-    //element.classList.toggle("error");
+
+    element.classList.toggle("error");
     alert(err);
     return false;
 }
 
 
-function validateSemester(semester) {
+function validateSemester(element) {
     let err = "The semester must be 1, 2 or 3";
-    //let //element = document.get//elementById("semester");
-    if (! isEmpty(semester)) {
-        if (!isNum(semester, 0, 3)) {
+    let semester = element.value.trim();
+    console.log(semester);
+
+    if (isNumRange(semester, 1, 4) && semester.length === 1) {
+        console.log("TRUE");
+        return true;
+    }
+    console.log("FAILED");
+    element.classList.toggle("error");
+    alert(err);
+    return false;
+}
+
+
+function validateCredits(element) {
+    let err = "The credit level must between 1 - 8";
+    let credits = element.value.trim();
+    if (credits.length === 1) {
+        if (isNumRange(credits, 1, 9)) {
             return true;
         }
     }
-    //element.classList.toggle("error");
+    element.classList.toggle("error");
     alert(err);
     return false;
 }
 
 
-function validateCredits(credits) {
-    let err = "The credit level must between 1 - 8";
-    //let //element = document.get//elementById("credits");
-    if(isEmpty(credits)) {
-        if (credits.length === 1) {
-            if (!isNum(credits, 0, 9)) {
-                alert(err);
-                //element.classList.toggle("error");
-                return false;
-            }
-            return true
-        }
-    }
-    //element.classList.toggle("error");
-    alert(err);
-    return false;
-}
-
-
-function validateTitle(title){
-    //let //element = document.get//elementById("credits");
+function validateTitle(element){
+    let title = element.value.trim();
     if(isEmpty(title)){
         title.classList.toggle("error");
         return false;
@@ -123,8 +171,8 @@ function validateTitle(title){
 }
 
 
-function validateLevel(level) {
-    //let //element = document.get//elementById("level");
+function validateLevel(element) {
+    let level = element.value.trim();
     if(isEmpty(level)){
         level.classList.toggle("error");
         return false;
@@ -132,3 +180,20 @@ function validateLevel(level) {
         return true;
     }
 }
+
+
+function validateDropdown(element) {
+    let err = "A student must be selected";
+    console.log(typeof element.value);
+    let student = element.value.trim();
+
+    console.log(student);
+
+    if(student.length === 1 && (! isNumRange(student,0,1))){
+        return true
+    }
+    alert(err);
+    element.classList.toggle("error");
+    return false;
+}
+

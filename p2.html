@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="styles/p2.css">
-    <link rel="script" src="scripts/p2.js">
+    <script rel="script" src="scripts/p2.js"></script>
+
     <title>Course creation form</title>
 </head>
 <body>
-    <form action="#" onsubmit="return validateForm(this);" >
+    <form id="form1" action="#" onsubmit="return validateForm1();" >
         Course Code: <br />
         <input class="valid" type="text" id="code" name="code" /> <br />
         Course Title: <br />
@@ -20,8 +21,10 @@
         <input class="valid" type="text" id="credits" name="credits" /> <br />
         Semester Offered: <br />
         <input class="valid" type="text" id="semester" name="semester" /> <br />
+        <br />
 
         <select class="valid" name="student">
+            <option value="0" label="--select--"></option>
             <option value="1">Sara Lambert</option>
             <option value="2">Brad Williams</option>
             <option value="3">Rosalyn Brown</option>
