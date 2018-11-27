@@ -15,7 +15,7 @@ function validateForm1() {
         console.log(msg);
         msg = msg && validateSemester(form["semester"]);
         console.log(msg);
-        msg = msg && validateDropdown(form["student"]);
+        msg = msg && validateDropdown(form["author"]);
         console.log(msg);
         return msg
     }
@@ -185,12 +185,12 @@ function validateLevel(element) {
 function validateDropdown(element) {
     let err = "A student must be selected";
     console.log(typeof element.value);
-    let student = element.value.trim();
+    let author = element.value.trim();
 
-    console.log(student);
+    console.log(author);
 
-    if(student.length === 1 && (! isNumRange(student,0,1))){
-        return true
+    if(author.length === 1 && (! isNumRange(author,0,1))){
+        return true;
     }
     alert(err);
     element.classList.toggle("error");

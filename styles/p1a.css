@@ -3,6 +3,11 @@ body{
     font-size: 1.1em;
 }
 
+table{
+    border-collapse: collapse;
+    /*border-spacing: 0px;*/
+}
+
 tr{
     text-align: center;
     background-color: #dfe1e7;
@@ -32,4 +37,8 @@ td{
 
 #header-row{
     background-color: #687291;
+}
+
+#total{
+    visibility: hidden;
 }

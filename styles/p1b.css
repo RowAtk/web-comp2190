@@ -3,8 +3,20 @@ body{
     font-size: 1.1em;
 }
 
+table{
+    border: 10px solid #d0d0ff;
+    border-spacing: 0px;
+    padding: 20px;
+    table-layout: fixed;
+    height: initial;
+    /*border-collapse: collapse;*/
+    /*border-bottom: 2px #000000;*/
+}
+
 tr{
+    /*border-top: 20px solid red;*/
     text-align: center;
+    border-collapse: collapse;
 }
 
 th{
@@ -21,13 +33,13 @@ td{
     white-space: nowrap;
 }
 
-table{
-    border: 10px solid #d0d0ff;
-    padding: 20px;
-    table-layout: fixed;
-    height: initial;
+
+tr#total td{
+    border-top: 2px solid black;
 }
 
 .left-col{
     text-align: left;
 }
+
+

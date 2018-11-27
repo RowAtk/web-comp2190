@@ -1,42 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="styles/p2.css">
-    <script rel="script" src="scripts/p2.js"></script>
+    <meta name="author" content="Rowan Atkinson"/>
+    <link rel="stylesheet" type="text/css" href="styles/p2.css" />
+    <script type="application/javascript" src="scripts/p2.js"></script>
 
     <title>Course creation form</title>
 </head>
 <body>
-    <form id="form1" action="#" onsubmit="return validateForm1();" >
-        Course Code: <br />
-        <input class="valid" type="text" id="code" name="code" /> <br />
-        Course Title: <br />
-        <input class="valid" type="text" id="title" name="title" /> <br />
-        Course Discipline: <br />
-        <input class="valid" type="text" id="discipline" name="discipline" /> <br />
-        Level: <br />
-        <input class="valid" type="text" id="level" name="level" /> <br />
-        Credits: <br />
-        <input class="valid" type="text" id="credits" name="credits" /> <br />
-        Semester Offered: <br />
-        <input class="valid" type="text" id="semester" name="semester" /> <br />
-        <br />
+    <form id="form1" action="scripts/p3.php" method="post" >
+        <div>
+            Course Code: <br /> 
+            <input title="Course ID" class="valid" type="text" id="code" name="code" /> <br />
+             Course Title: <br /> 
+            <input title="Course Title" class="valid" type="text" id="title" name="title" /> <br />
+            Course Discipline: <br /> 
+            <input title="Course Discipline" class="valid" type="text" id="discipline" name="discipline" /> <br />
+            Level: <br />
+            <input title="Level Course is offere" class="valid" type="text" id="level" name="level" /> <br />
+            Credits: <br />
+            <input title="Credit weighting of the course" class="valid" type="text" id="credits" name="credits" /> <br />
+            Semester Offered: <br /> 
+            <input title="Semester Course is offered" class="valid" type="text" id="semester" name="semester" /> <br />
+            <br />
 
-        <select class="valid" name="student">
-            <option value="0" label="--select--"></option>
-            <option value="1">Sara Lambert</option>
-            <option value="2">Brad Williams</option>
-            <option value="3">Rosalyn Brown</option>
-            <option value="4">Emil Powell</option>
-            <option value="5">Rene Picard</option>
-            <option value="6">Larry Fields</option>
-        </select>
+            <select title="Author to Course" class="valid" name="author">
+                <option value="0" label="--select--"></option>
+                <option value="1">Sara Lambert</option>
+                <option value="2">Brad Williams</option>
+                <option value="3">Rosalyn Brown</option>
+                <option value="4">Emil Powell</option>
+                <option value="5">Rene Picard</option>
+                <option value="6">Larry Fields</option>
+            </select>
 
-        <input type="hidden" name="form-id" value="c7fafc6d1d3ec4671a342b64e319909f" />
-        <br /> <br />
-        <input type="submit" value="Submit" />
+            <input type="hidden" name="form-id" value="c7fafc6d1d3ec4671a342b64e319909f" />
+            <div> <br /> <br /> </div>
+            <input type="submit" value="Submit" />
+        </div>
     </form>
-
 </body>
 </html>
